@@ -7,6 +7,7 @@ class STUtils {
     return _stCodeMap[stCode];
   }
 }
+
 Map _stCodeMap = {
   555754: STCode(555754, "Enabled"),
   545248: STCode(545248, "Disabled"),
@@ -24,6 +25,8 @@ Map _stCodeMap = {
   975651: STCode(975651, "Completed"),
   5548102: STCode(5548102, "Failed"),
   494855: STCode(494855, "Sent"),
+  4910055: STCode(4910055, "Reset Password "),
+  485657: STCode(485657, "New Account"),
   509854: STCode(509854, "Enabled"),
   509953: STCode(509953, "Disabled"),
   525749: STCode(525749, "Enabled"),
@@ -58,15 +61,18 @@ class STCodes {
   static _AppConfigsST appConfigs = _AppConfigsST();
   static _CallInvitesST callInvites = _CallInvitesST();
   static _UserPaymentRequestsST userPaymentRequests = _UserPaymentRequestsST();
-  static _MobileVerificationLogsST mobileVerificationLogs = _MobileVerificationLogsST();
+  static _MobileVerificationLogsST mobileVerificationLogs =
+      _MobileVerificationLogsST();
   static _ZaanAnimalDetailsST zaanAnimalDetails = _ZaanAnimalDetailsST();
   static _ZaanRoleDetailsST zaanRoleDetails = _ZaanRoleDetailsST();
   static _ZaanLanguageDetailsST zaanLanguageDetails = _ZaanLanguageDetailsST();
   static _ZaanCountryDetailsST zaanCountryDetails = _ZaanCountryDetailsST();
   static _ServerStatusST serverStatus = _ServerStatusST();
-  static _EmailVerificationLogsST emailVerificationLogs = _EmailVerificationLogsST();
+  static _EmailVerificationLogsST emailVerificationLogs =
+      _EmailVerificationLogsST();
   static _ReferralCodesST referralCodes = _ReferralCodesST();
-  static _UserTransactionDetailsST userTransactionDetails = _UserTransactionDetailsST();
+  static _UserTransactionDetailsST userTransactionDetails =
+      _UserTransactionDetailsST();
 }
 
 class _AppConfigsST {
@@ -109,12 +115,18 @@ class _UserPaymentRequestsStatusST {
 
 class _MobileVerificationLogsST {
   _MobileVerificationLogsStatusST status = _MobileVerificationLogsStatusST();
+  _MobileVerificationLogsTypeST type = _MobileVerificationLogsTypeST();
 }
 
 class _MobileVerificationLogsStatusST {
   STCode completed = _stCodeMap[975651];
   STCode failed = _stCodeMap[5548102];
   STCode sent = _stCodeMap[494855];
+}
+
+class _MobileVerificationLogsTypeST {
+  STCode resetPassword = _stCodeMap[4910055];
+  STCode newAccount = _stCodeMap[485657];
 }
 
 class _ZaanAnimalDetailsST {
@@ -213,7 +225,8 @@ class STCode {
   STCode(this.id, this.displayText, [this.explanation]);
 
   bool operator ==(Object object) {
-    return object.runtimeType == STCode && (object as STCode).id == this.id; // ignore: test_types_in_equals
+    return object.runtimeType == STCode &&
+        (object as STCode).id == this.id; // ignore: test_types_in_equals
   }
 
   @override
@@ -221,6 +234,6 @@ class STCode {
 
   @override
   String toString() {
-    return displayText + (explanation!=null?" : $explanation":"");
+    return displayText + (explanation != null ? " : $explanation" : "");
   }
 }
