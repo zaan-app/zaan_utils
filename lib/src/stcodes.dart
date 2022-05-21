@@ -17,6 +17,9 @@ Map _stCodeMap = {
   5610250: STCode(5610250, "Public"),
   9710298: STCode(9710298, "Auto"),
   555556: STCode(555556, "Private"),
+  4999102: STCode(4999102, "Enabled"),
+  1015049: STCode(1015049, "Disabled"),
+  9798100: STCode(9798100, "Active"),
   565752: STCode(565752, "Processing"),
   544997: STCode(544997, "Completed"),
   5410099: STCode(5410099, "Refunded"),
@@ -61,18 +64,15 @@ class STCodes {
   static _AppConfigsST appConfigs = _AppConfigsST();
   static _CallInvitesST callInvites = _CallInvitesST();
   static _UserPaymentRequestsST userPaymentRequests = _UserPaymentRequestsST();
-  static _MobileVerificationLogsST mobileVerificationLogs =
-      _MobileVerificationLogsST();
+  static _MobileVerificationLogsST mobileVerificationLogs = _MobileVerificationLogsST();
   static _ZaanAnimalDetailsST zaanAnimalDetails = _ZaanAnimalDetailsST();
   static _ZaanRoleDetailsST zaanRoleDetails = _ZaanRoleDetailsST();
   static _ZaanLanguageDetailsST zaanLanguageDetails = _ZaanLanguageDetailsST();
   static _ZaanCountryDetailsST zaanCountryDetails = _ZaanCountryDetailsST();
   static _ServerStatusST serverStatus = _ServerStatusST();
-  static _EmailVerificationLogsST emailVerificationLogs =
-      _EmailVerificationLogsST();
+  static _EmailVerificationLogsST emailVerificationLogs = _EmailVerificationLogsST();
   static _ReferralCodesST referralCodes = _ReferralCodesST();
-  static _UserTransactionDetailsST userTransactionDetails =
-      _UserTransactionDetailsST();
+  static _UserTransactionDetailsST userTransactionDetails = _UserTransactionDetailsST();
 }
 
 class _AppConfigsST {
@@ -93,12 +93,19 @@ class _AppConfigsTypeST {
 
 class _CallInvitesST {
   _CallInvitesTypeST type = _CallInvitesTypeST();
+  _CallInvitesStatusST status = _CallInvitesStatusST();
 }
 
 class _CallInvitesTypeST {
   STCode public = _stCodeMap[5610250];
   STCode auto = _stCodeMap[9710298];
   STCode private = _stCodeMap[555556];
+}
+
+class _CallInvitesStatusST {
+  STCode enabled = _stCodeMap[4999102];
+  STCode disabled = _stCodeMap[1015049];
+  STCode active = _stCodeMap[9798100];
 }
 
 class _UserPaymentRequestsST {
@@ -225,8 +232,7 @@ class STCode {
   STCode(this.id, this.displayText, [this.explanation]);
 
   bool operator ==(Object object) {
-    return object.runtimeType == STCode &&
-        (object as STCode).id == this.id; // ignore: test_types_in_equals
+    return object.runtimeType == STCode && (object as STCode).id == this.id; // ignore: test_types_in_equals
   }
 
   @override
