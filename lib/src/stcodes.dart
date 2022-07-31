@@ -7,7 +7,6 @@ class STUtils {
     return _stCodeMap[stCode];
   }
 }
-
 Map _stCodeMap = {
   555754: STCode(555754, "Enabled"),
   545248: STCode(545248, "Disabled"),
@@ -34,6 +33,7 @@ Map _stCodeMap = {
   509953: STCode(509953, "Disabled"),
   525749: STCode(525749, "Enabled"),
   505257: STCode(505257, "Disabled"),
+  554899: STCode(554899, "Active"),
   995550: STCode(995550, "Enabled"),
   985250: STCode(985250, "Disabled"),
   525799: STCode(525799, "Enabled"),
@@ -152,6 +152,7 @@ class _ZaanRoleDetailsST {
 class _ZaanRoleDetailsStatusST {
   STCode enabled = _stCodeMap[525749];
   STCode disabled = _stCodeMap[505257];
+  STCode active = _stCodeMap[554899];
 }
 
 class _ZaanLanguageDetailsST {
