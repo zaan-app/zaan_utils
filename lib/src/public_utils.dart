@@ -11,4 +11,18 @@ class PublicUtils {
     return prettyPrintedJson;
   }
 
+  static bool? stringToBool(String input) {
+    try {
+      if (input.toLowerCase() == 'true') {
+        return true;
+      } else if (input.toLowerCase() == 'false') {
+        return false;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
